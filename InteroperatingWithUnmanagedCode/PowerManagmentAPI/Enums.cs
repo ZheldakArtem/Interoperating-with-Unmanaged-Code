@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InteroperatingWithUnmanagedCode
+namespace PowerManagmentAPI
 {
-
 	/// <summary>
 	/// Lmcons.h
 	/// #define NET_API_STATUS DWORD
@@ -55,17 +54,17 @@ namespace InteroperatingWithUnmanagedCode
 		/// the lpServer parameter and the RPC server is not available.
 		/// </summary>
 		RPC_S_SERVER_UNAVAILABLE = 2147944122, // 0x800706BA
-											   /// <summary>
-											   /// Remote calls are not allowed for this process. This error is returned if a remote computer was 
-											   /// specified in the lpServer parameter and remote calls are not allowed for this process.
-											   /// </summary>
+		/// <summary>
+		/// Remote calls are not allowed for this process. This error is returned if a remote computer was 
+		/// specified in the lpServer parameter and remote calls are not allowed for this process.
+		/// </summary>
 		RPC_E_REMOTE_DISABLED = 2147549468 // 0x8001011C
 	}
 
 	/// <summary>
 	/// 
 	/// </summary>
-	enum POWER_INFORMATION_LEVEL
+	public enum POWER_INFORMATION_LEVEL
 	{
 		SystemPowerPolicyAc = 0,
 		SystemPowerPolicyDc = 1,
@@ -86,5 +85,4 @@ namespace InteroperatingWithUnmanagedCode
 		VerifyProcessorPowerPolicyDc = 21,
 		ProcessorPowerPolicyCurrent = 22
 	}
-
 }

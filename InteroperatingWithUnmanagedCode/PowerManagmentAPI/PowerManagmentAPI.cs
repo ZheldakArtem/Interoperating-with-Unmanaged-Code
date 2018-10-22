@@ -1,22 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PowerManagmentAPI
 {
-    public class PowerManagmentAPI
+    public class PowerManagment
     {
-		// CallNtPowerInformation
+		[DllImport("powrprof.dll")]
+		public static extern UInt32 CallNtPowerInformation(
+				int InformationLevel,
+				IntPtr lpInputBuffer,
+				uint nInputBufferSize,
+				out ulong lpOutputBuffer,
+				int nOutputBufferSize
+			);
 
-		// 1. Last sleep time
-
-		// 2. Last wake time
-
-		// 3. System battery state
-
-		// 4. System power information
+		[DllImport("powrprof.dll")]
+		public static extern UInt32 CallNtPowerInformation(
+				int InformationLevel,
+				IntPtr lpInputBuffer,
+				uint nInputBufferSize,
+				out SYSTEM_BATTERY_STATE lpOutputBuffer,
+				int nOutputBufferSize
+			);
 
 	}
 
