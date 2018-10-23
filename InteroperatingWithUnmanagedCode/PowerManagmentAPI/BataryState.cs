@@ -26,4 +26,12 @@ namespace PowerManagmentAPI
 		public UInt32 DefaultAlert1;
 		public UInt32 DefaultAlert2;
 	}
+
+	public struct SYSTEM_POWER_INFORMATION
+	{
+		public uint MaxIdlenessAllowed;
+		public uint Idleness;
+		public uint TimeRemaining;
+		public byte CoolingMode;
+	}
 }

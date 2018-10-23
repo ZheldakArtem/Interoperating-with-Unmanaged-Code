@@ -12,7 +12,7 @@ namespace PowerManagmentAPI
 		[DllImport("powrprof.dll")]
 		public static extern UInt32 CallNtPowerInformation(
 				int InformationLevel,
-				IntPtr lpInputBuffer,
+				[Out] IntPtr lpInputBuffer,
 				uint nInputBufferSize,
 				out ulong lpOutputBuffer,
 				int nOutputBufferSize
@@ -26,6 +26,19 @@ namespace PowerManagmentAPI
 				out SYSTEM_BATTERY_STATE lpOutputBuffer,
 				int nOutputBufferSize
 			);
+
+		[DllImport("powrprof.dll")]
+		public static extern uint CallNtPowerInformation(
+				int InformationLevel,
+				IntPtr lpInputBuffer,
+				int nInputBufferSize,
+				out SYSTEM_POWER_INFORMATION spi,
+				int nOutputBufferSize
+			);
+
+
+		[DllImport ("powrprof.dll", SetLastError = true)]
+		public static extern bool SetSuspendState (bool hibernate, bool forceCritical, bool disableWakeEvent);
 
 	}
 
