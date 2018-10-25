@@ -16,7 +16,7 @@ namespace InteroperatingWithUnmanagedCode
 		{
 			ulong lpOutputBuffer = 0;
 
-			uint retval = PowerManagment.CallNtPowerInformation(
+			uint retval = NativePowerManagment.CallNtPowerInformation(
 					(int)POWER_INFORMATION_LEVEL.LastWakeTime,
 					IntPtr.Zero,
 					0,
@@ -45,7 +45,7 @@ namespace InteroperatingWithUnmanagedCode
 		{
 			ulong lpOutputBuffer = 0;
 
-			uint retval = PowerManagment.CallNtPowerInformation(
+			uint retval = NativePowerManagment.CallNtPowerInformation(
 					(int)POWER_INFORMATION_LEVEL.LastSleepTime,
 					IntPtr.Zero,
 					0,
@@ -75,7 +75,7 @@ namespace InteroperatingWithUnmanagedCode
 		{
 			SYSTEM_BATTERY_STATE batteryStatesStruct;
 
-			uint retval = PowerManagment.CallNtPowerInformation(
+			uint retval = NativePowerManagment.CallNtPowerInformation(
 					(int)POWER_INFORMATION_LEVEL.SystemBatteryState,
 					IntPtr.Zero,
 					0,
@@ -118,7 +118,7 @@ namespace InteroperatingWithUnmanagedCode
 		{
 			SYSTEM_POWER_INFORMATION spi;
 
-			uint retval = PowerManagment.CallNtPowerInformation(
+			uint retval = NativePowerManagment.CallNtPowerInformation(
 				(int)POWER_INFORMATION_LEVEL.SystemPowerInformation,
 				IntPtr.Zero,
 				0,
@@ -154,7 +154,7 @@ namespace InteroperatingWithUnmanagedCode
 			IntPtr pBool = Marshal.AllocHGlobal(size);
 			Marshal.WriteInt32(pBool, 0, 1);  // last parameter 0 (FALSE), 1 (TRUE)
 
-			uint retval = PowerManagment.CallNtPowerInformation(
+			uint retval = NativePowerManagment.CallNtPowerInformation(
 				(int)POWER_INFORMATION_LEVEL.SystemReserveHiberFile,
 				pBool,
 				(uint)Marshal.SizeOf(typeof(IntPtr)),
@@ -190,7 +190,7 @@ namespace InteroperatingWithUnmanagedCode
 			IntPtr pBool = Marshal.AllocHGlobal(size);
 			Marshal.WriteInt32(pBool, 0, 0);  // last parameter 0 (FALSE), 1 (TRUE)
 
-			uint retval = PowerManagment.CallNtPowerInformation(
+			uint retval = NativePowerManagment.CallNtPowerInformation(
 				(int)POWER_INFORMATION_LEVEL.SystemReserveHiberFile,
 				pBool,
 				(uint)Marshal.SizeOf(typeof(IntPtr)),
@@ -220,6 +220,17 @@ namespace InteroperatingWithUnmanagedCode
 		public void TestSetSuspendStateTest()
 		{
 			//PowerManagment.SetSuspendState(false, false, false);   // IT WORKS!!! I've already checked :))
+		}
+
+
+		[TestMethod]
+		public void TestMessageBox()
+		{
+			var t = new PowerManager();
+			t.LastSleepTime();
+			t.LastWakeTime();
+			t.SystemBaterryState();
+			t.SystemPowerInformation();
 		}
 	}
 }

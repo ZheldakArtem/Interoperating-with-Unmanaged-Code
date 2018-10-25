@@ -29,6 +29,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,9 +47,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BataryState.cs" />
+    <Compile Include="COM\IPowerManagmentAPI.cs" />
+    <Compile Include="PowerManager.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="PowerManagmentAPI.cs" />
+    <Compile Include="NativePowerManagmentAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Key.snk" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="VBScript\LastSleepTimeTest.vbs" />
+    <Content Include="VBScript\LastWakeTimeTest.vbs" />
+    <Content Include="VBScript\SystemBaterryState.vbs" />
+    <Content Include="VBScript\SystemPowerInformation.vbs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

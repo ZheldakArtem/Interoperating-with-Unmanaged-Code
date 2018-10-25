@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PowerManagmentAPI
 {
-    public class PowerManagment
+    public class NativePowerManagment
     {
 		[DllImport("powrprof.dll")]
 		public static extern UInt32 CallNtPowerInformation(
@@ -39,6 +39,12 @@ namespace PowerManagmentAPI
 
 		[DllImport ("powrprof.dll", SetLastError = true)]
 		public static extern bool SetSuspendState (bool hibernate, bool forceCritical, bool disableWakeEvent);
+
+
+		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+		public static extern int MessageBoxW(int hWnd, String text, String caption, uint type);
+
+
 
 	}
 
