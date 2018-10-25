@@ -47,8 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BataryState.cs" />
-    <Compile Include="COM\IPowerManagmentAPI.cs" />
-    <Compile Include="PowerManager.cs" />
+    <Compile Include="Task2_COM\IPowerManagmentAPI.cs" />
+    <Compile Include="Task2_COM\PowerManager.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="NativePowerManagmentAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,11 +57,5 @@
     <None Include="Key.snk" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="VBScript\LastSleepTimeTest.vbs" />
-    <Content Include="VBScript\LastWakeTimeTest.vbs" />
-    <Content Include="VBScript\SystemBaterryState.vbs" />
-    <Content Include="VBScript\SystemPowerInformation.vbs" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
